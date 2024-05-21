@@ -1,7 +1,7 @@
 import pygame, sys
 from functions import JuegoTetris
 from colors import Colors
-from Prueba import TetrisAI
+from functionsAI import TetrisAI
 
 class ImplementationAI:
   def __init__(self):
@@ -47,7 +47,7 @@ class ImplementationAI:
           self.automata.game_over = True
       
         if event.type == GAME_UPDATE and self.automata.game_over == False:
-          self.automata.play_autonomously()
+          self.ai.play()
 
     # Actualizamos la ventana cada que ocurra un cambio
 

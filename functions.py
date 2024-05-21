@@ -97,60 +97,6 @@ class JuegoTetris:
             if self.grid.is_inside(tile.row, tile.colum) == False:
                 return False
         return True
- 
-#    FUNCIONES DEL AUTOMATA    
-    
-    #Guarda es estado actual del juego
-    def save_state(self):
-        self.prev_block = self.current_block
-        self.prev_grid = copy.deepcopy(self.grid.grid)
-    
-    #Restaura el juego utilizando la funcion save_state
-    def restore_state(self):
-        self.current_block = self.prev_block
-        self.grid.grid = copy.deepcopy(self.prev_grid)
-    
-    #Evaluta el movimiento    
-    def evaluate_state(self, grid):
-        filled_cells = sum(sum(row) for row in grid.grid)
-        holes = sum(1 for row in grid.grid for cell in row if cell == 0 and any(grid.grid[i][j] != 0 for i in range(row.index(cell), len(grid.grid)) for j in range(len(row))))
-        height = max(max(row.index(cell) for cell in row if cell != 0) for row in grid.grid)
-        return -filled_cells - holes * 2 - height * 3
-    
-    #posibles movimientos
-    def moves(self, direction):
-        if direction == 'left':
-            self.move_left()
-        elif direction == 'right':
-            self.move_right()
-        elif direction == 'down':
-            self.mode_down()
-        elif direction == 'rotate':
-            self.rotate()
-#Automata 
-def play_autonomously(self):
-    while not self.game_over:
-        if not self.grid.is_empty():
-            best_move = None
-            best_score = float('-inf')
-            for move in [self.move_left(), self.move_right(), self.rotate(), self.mode_down()]:
-                self.save_state()
-                score = self.evaluate_state(self.grid)
-                if score > best_score:
-                    best_move = move
-                    best_score = score
-                self.restore_state()
-            if best_move:
-                best_move()
-            else:
-                self.mode_down()
-            self.update_score(0, 1)
-        else:
-            self.mode_down()
-            self.update_score(0, 1)
-            
-#   FIN DE LAS FUNCIONES DEL AUTOMATA
-
 
 # Dibujar el juego en pantalla
     def draw(self, screen):
