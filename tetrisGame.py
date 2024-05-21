@@ -2,6 +2,7 @@ import multiprocessing
 from implementationAI import ImplementationAI
 from implementation import Implementation
 
+
 def run_human_mode():
     impl = Implementation()
     impl.play()
@@ -21,4 +22,4 @@ if __name__ == '__main__':
 
     # Wait for both processes to finish
     p1.join()
-    p2.join()     
+    p2.join()      

@@ -7,7 +7,6 @@ class ImplementationAI:
   def __init__(self):
     #Inicializamos pygames
     pygame.init()
-
     #Fuenta para las letras
     self.title_font = pygame.font.Font(None, 40)
     self.score_surface = self.title_font.render("Score", True, Colors.white)

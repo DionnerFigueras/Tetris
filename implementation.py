@@ -2,6 +2,7 @@
 import pygame, sys
 from functions import JuegoTetris
 from colors import Colors
+import os
 
 class Implementation:
   def __init__(self):
@@ -18,6 +19,7 @@ class Implementation:
     self.next_rect = pygame.Rect(320, 215, 170, 180)
 
     #Definimos el alto y ancho de la pantalla
+    os.environ['SDL_VIDEO_START'] = '1'
     self.screen = pygame.display.set_mode((500, 620))
 
     #Definimos un titulo para el juego
